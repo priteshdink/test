@@ -1,0 +1,69 @@
+<mvc:View controllerName="project1.controller.View1"
+   	xmlns:mvc="sap.ui.core.mvc"
+		xmlns="sap.m"
+		xmlns:upload="sap.m.upload">
+	<Page showHeader="false">
+		<upload:UploadSet
+        uploadCompleted="onComp"
+				id="UploadSet"
+				instantUpload="true"
+				showIcons="true"
+				uploadEnabled="true"
+				terminationEnabled="true"
+				fileTypes="txt,doc,png"
+				maxFileNameLength="30"
+				maxFileSize="200"
+                
+				mediaTypes="text/plain,application/msword,image/png"
+				uploadUrl="../../../../upload"
+				items="{path: '/', templateShareable: true}"
+				mode="MultiSelect"
+				selectionChanged="onSelectionChange"
+				directory="false">
+			<upload:toolbar>
+				<OverflowToolbar>
+					<ToolbarSpacer/>
+					 <SegmentedButton accessibleName="Upload modes" selectionChange="handleSelectionChange">
+                        <items>
+                            <SegmentedButtonItem text="File Mode"></SegmentedButtonItem>
+                        </items>
+                    </SegmentedButton>
+				</OverflowToolbar>
+			</upload:toolbar>
+			<upload:items>
+				<upload:UploadSetItem
+						mediaType="{mediaType}"
+						url="{url}"
+
+                        openPressed="onPress"
+						thumbnailUrl="{thumbnailUrl}"
+						attributes="{path: 'attributes', templateShareable: false}"
+						markers="{path: 'markers', templateShareable: false}"
+						statuses="{path: 'statuses', templateShareable: false}"
+						uploadState="{uploadState}">
+					<upload:attributes>
+						<ObjectAttribute
+								title="{title}"
+								text="{text}"
+								active="true"
+                                press="onPress"
+                                />
+					</upload:attributes>
+					<upload:markers>
+						<ObjectMarker
+								type="{type}"
+								visibility="{visibility}"/>
+					</upload:markers>
+					<upload:statuses>
+						<ObjectStatus
+								title="{title}"
+								text="{text}"
+								state="{state}"
+								icon="{icon}"
+								active="true"/>
+					</upload:statuses>
+				</upload:UploadSetItem>
+			</upload:items>
+		</upload:UploadSet>
+	</Page>
+</mvc:View>
